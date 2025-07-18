@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'gallery.dart';
+import 'product.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,7 +12,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       home: Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
@@ -19,14 +22,27 @@ class MainApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 12, left: 16, right: 16, bottom: 4),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'รายการรูปภาพ',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 12,
+                left: 16,
+                right: 16,
+                bottom: 4,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'รายการรูปภาพ',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.to(() => MyWidget());
+                    },
+                    child: const Text('รูปถาพทั้งหมด'),
+                  ),
+                ],
               ),
             ),
             Expanded(
@@ -70,14 +86,27 @@ class MainApp extends StatelessWidget {
                 }),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 12, left: 16, right: 16, bottom: 4),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'รายการสินค้า',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 12,
+                left: 16,
+                right: 16,
+                bottom: 4,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'รายการสินค้า',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.to(() => const ProductPage());
+                    },
+                    child: const Text('สินค้าทั้งหมด'),
+                  ),
+                ],
               ),
             ),
             Expanded(
