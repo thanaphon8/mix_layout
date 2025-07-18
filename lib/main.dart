@@ -20,6 +20,43 @@ class MainApp extends StatelessWidget {
           title: const Text('Grid & List View'),
           backgroundColor: Colors.blue,
         ),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(color: Colors.blue),
+                child: const Text(
+                  'เมนู',
+                  style: TextStyle(color: Colors.white, fontSize: 24),
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text('หน้าแรก'),
+                onTap: () {
+                  // ปิด Drawer แล้วกลับไปหน้า main (root)
+                  Navigator.pop(context);
+                  Get.offAll(() => const MainApp());
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.photo),
+                title: Text('รูปภาพทั้งหมด'),
+                onTap: () {
+                  Get.to(() => MyWidget());
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.shopping_cart),
+                title: Text('สินค้าทั้งหมด'),
+                onTap: () {
+                  Get.to(() => const ProductPage());
+                },
+              ),
+            ],
+          ),
+        ),
         body: Column(
           children: [
             Padding(
